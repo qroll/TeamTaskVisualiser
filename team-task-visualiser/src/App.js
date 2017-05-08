@@ -31,14 +31,12 @@ class TaskComponent extends Component {
   }
 
   addTask(task) {
-    let newState = {
-      ...this.state,
+    this.setState({
       tasks: [
         ...this.state.tasks,
         task
       ]
-    };
-    this.setState(newState);
+    });
   }
 
   render() {
