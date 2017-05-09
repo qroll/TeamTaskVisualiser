@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-import TaskVisualiser from "./components/TaskVisualiser";
+import TaskVisualiserContainer from "./containers/TaskVisualiserContainer";
 
 class App extends Component {
   render() {
@@ -15,7 +15,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <TaskVisualiser />
+        <TaskVisualiserContainer />
       </div>
     );
   }
