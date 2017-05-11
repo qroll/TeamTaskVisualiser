@@ -1,5 +1,10 @@
 const tasks = (state = { tasks: [] }, action) => {
   switch (action.type) {
+    case "GET_TASKS":
+      return {
+        ...state,
+        tasks: action.tasks
+      }
     case "ADD_TASK":
       return {
         ...state,
