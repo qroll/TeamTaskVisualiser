@@ -11,7 +11,9 @@ class TaskForm extends Component {
   }
 
   handleSubmit(event) {
-    this.props.addTask(this.state.value);
+    this.props.addTask({
+      title: this.state.value
+    });
     this.setState({
       value: ""
     });

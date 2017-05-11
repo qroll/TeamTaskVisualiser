@@ -5,7 +5,7 @@ class Task extends Component {
     super(props);
     this.state = {
       isEditing: false,
-      value: this.props.task
+      value: this.props.title
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,7 +20,9 @@ class Task extends Component {
   }
 
   handleSubmit(event) {
-    this.props.editTask(this.props.taskId, this.state.value);
+    this.props.editTask(this.props.taskId, {
+      title: this.state.value
+    });
     this.setState({
       isEditing: false
     });
@@ -45,7 +47,7 @@ class Task extends Component {
             />
           </form>
         </li>
-      : <li onClick={this.handleClick}>{this.props.task}</li>;
+      : <li onClick={this.handleClick}>{this.props.title}</li>;
   }
 }
 

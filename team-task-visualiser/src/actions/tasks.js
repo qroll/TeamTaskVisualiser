@@ -2,17 +2,32 @@ import axios from "axios";
 
 let API_URL = "http://localhost:9000";
 
+export const getTasks = () => {
+  return dispatch => {
+    axios
+      .get(API_URL + "/task")
+      .then(res => {
+        console.log(res.data);
+        dispatch({
+          type: "GET_TASKS",
+          tasks: res.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+
 export const addTask = task => {
   return dispatch => {
     axios
-      .post(API_URL + "/task", {
-        task
-      })
+      .post(API_URL + "/task", { task })
       .then(res => {
-        console.log(res);
+        console.log(res.data);
         dispatch({
           type: "ADD_TASK",
-          task: task
+          task: res.data
         });
       })
       .catch(err => {
@@ -24,7 +39,7 @@ export const addTask = task => {
 export const editTask = (taskId, task) => {
   return {
     type: "EDIT_TASK",
-    taskId: taskId,
-    task: task
+    taskId,
+    task
   };
 };

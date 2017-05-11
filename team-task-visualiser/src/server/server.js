@@ -44,10 +44,10 @@ app.get("/task", (req, res) => {
 });
 
 app.post("/task", (req, res) => {
-  Task.create({task: req.body.task})
+  Task.create(req.body.task)
     .then(data => {
       console.log(data);
-      res.sendStatus(200);
+      res.json(data);
     })
     .catch(err => {
       console.log(err);
