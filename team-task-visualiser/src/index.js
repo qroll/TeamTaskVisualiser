@@ -7,7 +7,7 @@ import {
   Link
 } from 'react-router-dom';
 
-import App from './App';
+import TaskVisualiserContainer from './containers/TaskVisualiserContainer';
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import configureStore from './store';
@@ -29,7 +29,7 @@ ReactDOM.render(
 
         <hr/>
 
-        <Route path="/tasks" component={App}/>
+        <Route path="/tasks" component={TaskVisualiserContainer}/>
         <Route path="/login" component={Login}/>
         <Route path="/signup" component={SignUp}/>
       </div>
