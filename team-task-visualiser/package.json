@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "express": "^4.15.2",
+    "mongoose": "^4.9.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "redux": "^3.6.0",
     "react-redux": "^4.4.5",
+    "redux": "^3.6.0",
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
