@@ -1,34 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import NavHeader from './components/NavHeader';
-import TaskVisualiserContainer from './containers/TaskVisualiserContainer';
+import NavHeaderContainer from "./containers/NavHeaderContainer";
+import TaskVisualiserContainer from "./containers/TaskVisualiserContainer";
 import LoginContainer from "./containers/LoginContainer";
 import SignUpContainer from "./containers/SignUpContainer";
-import configureStore from './store';
-import './index.css';
+import configureStore from "./store";
+import "./index.css";
 
 const initialState = {
   tasks: []
-}
+};
 
 ReactDOM.render(
   <Provider store={configureStore(initialState)}>
     <Router>
       <div>
-        <NavHeader />
+        <NavHeaderContainer />
 
-        <Route path="/tasks" component={TaskVisualiserContainer}/>
-        <Route path="/login" component={LoginContainer}/>
-        <Route path="/signup" component={SignUpContainer}/>
+        <Route path="/tasks" component={TaskVisualiserContainer} />
+        <Route path="/login" component={LoginContainer} />
+        <Route path="/signup" component={SignUpContainer} />
       </div>
     </Router>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

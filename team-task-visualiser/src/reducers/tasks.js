@@ -1,27 +1,18 @@
-const tasks = (state = { tasks: [] }, action) => {
+const tasks = (state = [], action) => {
   switch (action.type) {
     case "GET_TASKS":
-      return {
-        ...state,
-        tasks: action.tasks
-      };
+      return action.tasks;
     case "ADD_TASK":
-      return {
-        ...state,
-        tasks: [...state.tasks, action.task]
-      };
+      return [...state, action.task];
     case "EDIT_TASK":
-      var index = state.tasks.findIndex(task => task._id === action.taskId);
+      var index = state.findIndex(task => task._id === action.taskId);
       return index < 0
         ? state
-        : {
-            ...state,
-            tasks: [
-              ...state.tasks.slice(0, index),
-              action.task,
-              ...state.tasks.slice(index + 1)
-            ]
-          };
+        : [
+            ...state.slice(0, index),
+            action.task,
+            ...state.slice(index + 1)
+          ];
     default:
       return state;
   }

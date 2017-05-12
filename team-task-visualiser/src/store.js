@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
-import tasks from "./reducers/tasks";
+import RootReducer from "./reducers/RootReducer";
 
 const isBrowser = typeof window !== "undefined";
 const composeEnhancers = isBrowser
@@ -10,7 +10,7 @@ const composeEnhancers = isBrowser
 const enhancers =  composeEnhancers(applyMiddleware(thunk));
 
 const configureStore = initialState => {
-  return createStore(tasks, initialState, enhancers);
+  return createStore(RootReducer, initialState, enhancers);
 };
 
 export default configureStore;

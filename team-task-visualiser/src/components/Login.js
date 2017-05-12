@@ -45,11 +45,4 @@ class Login extends Component {
   }
 }
 
-// just a simple validation function to test retrieval of input values
-function validate(username, password) {
-  let isValidUsername = username.trim().length > 0;
-  let isValidPassword = password.length > 0;
-  return isValidUsername && isValidPassword;
-}
-
 export default Login;

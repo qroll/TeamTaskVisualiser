@@ -1,11 +1,16 @@
-const user = (state = { user: { username: "guest" } }, action) => {
+const user = (state = { isAuthed: false, username: "guest" }, action) => {
   switch (action.type) {
     case "SIGNUP_USER":
-      return state;
+      return {
+        ...state,
+        isAuthed: true,
+        username: action.username
+      };
     case "LOGIN_USER":
       return {
         ...state,
-        user: { username: action.username }
+        isAuthed: true,
+        username: action.username
       };
     default:
       return state;
