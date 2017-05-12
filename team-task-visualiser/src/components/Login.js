@@ -11,6 +11,8 @@ class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.props.login(this.username.value, this.password.value);
+    /*
     if (validate(this.username.value, this.password.value)) {
       this.setState({
         hasError: false
@@ -20,7 +22,7 @@ class Login extends Component {
         hasError: true
       });
     }
-    alert("Username: " + this.username.value + "\nPassword: " + this.password.value);
+    */
   }
 
   render() {

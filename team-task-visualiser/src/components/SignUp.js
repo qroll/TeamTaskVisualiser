@@ -8,9 +8,7 @@ class SignUp extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    alert(
-      "Username: " + this.username.value + "\nPassword: " + this.password.value
-    );
+    this.props.signup(this.username.value, this.password.value);
   }
 
   render() {

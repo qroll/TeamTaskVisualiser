@@ -7,9 +7,10 @@ import {
   Link
 } from 'react-router-dom';
 
+import NavHeader from './components/NavHeader';
 import TaskVisualiserContainer from './containers/TaskVisualiserContainer';
-import SignUp from "./components/SignUp";
-import Login from "./components/Login";
+import LoginContainer from "./containers/LoginContainer";
+import SignUpContainer from "./containers/SignUpContainer";
 import configureStore from './store';
 import './index.css';
 
@@ -21,17 +22,11 @@ ReactDOM.render(
   <Provider store={configureStore(initialState)}>
     <Router>
       <div>
-        <ul>
-          <li><Link to="/signup">Sign Up</Link></li>
-          <li><Link to="/login">Login</Link></li>
-          <li><Link to="/tasks">Tasks</Link></li>
-        </ul>
-
-        <hr/>
+        <NavHeader />
 
         <Route path="/tasks" component={TaskVisualiserContainer}/>
-        <Route path="/login" component={Login}/>
-        <Route path="/signup" component={SignUp}/>
+        <Route path="/login" component={LoginContainer}/>
+        <Route path="/signup" component={SignUpContainer}/>
       </div>
     </Router>
   </Provider>,
