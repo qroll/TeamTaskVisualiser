@@ -1,21 +1,35 @@
-import React from "react";
+import React, { Component } from "react";
 
-const SignUp = () => {
-  return (
-    <div>
-      <label>
-        Username:
-        <input type="text" />
-      </label>
-      <label>
-        Password:
-        <input type="password" />
-      </label>
-      <button>
-        Sign Up
-      </button>
-    </div>
-  );
-};
+class SignUp extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    alert(
+      "Username: " + this.username.value + "\nPassword: " + this.password.value
+    );
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Username:
+          <input type="text" ref={node => (this.username = node)} />
+        </label>
+        <label>
+          Password:
+          <input type="password" ref={node => (this.password = node)} />
+        </label>
+        <button type="submit">
+          Sign Up
+        </button>
+      </form>
+    );
+  }
+}
 
 export default SignUp;
