@@ -23,7 +23,7 @@ passport.use(
       .then(user => {
         if (user) {
           console.log("Username already taken");
-          return done(null, false, { message: "Username already taken" });
+          throw 'oh no!';
         }
         return User.create({ username, password });
       })
