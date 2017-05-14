@@ -20,7 +20,7 @@ export const signup = (username, password) => {
 };
 
 export const login = (username, password) => {
-  return dispatch => {
+  return dispatch => new Promise(function(resolve, reject) {
     axios
       .post(API_URL + "/login", { username, password })
       .then(res => {
@@ -29,9 +29,11 @@ export const login = (username, password) => {
           type: "LOGIN_USER",
           username
         });
+        resolve();
       })
       .catch(err => {
         console.log(err);
+        reject();
       });
-  };
+  });
 };
