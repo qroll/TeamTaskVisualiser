@@ -1,15 +1,12 @@
 import React from "react";
 
 import Task from "./Task";
+import Reactable from "./Reactable";
 
 const TaskList = ({ tasks, editTask }) => {
   return (
     <div>
-      <ul>
-        {tasks.map((task, index) => (
-          <Task key={index} editTask={editTask} taskId={task._id} title={task.title} />
-        ))}
-      </ul>
+      <Reactable tasks={tasks} />
     </div>
   );
 };
