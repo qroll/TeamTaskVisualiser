@@ -12,6 +12,12 @@ const user = (state = { isAuthed: false, username: "guest" }, action) => {
         isAuthed: true,
         username: action.username
       };
+    case "LOGOUT_USER":
+      return {
+        ...state,
+        isAuthed: false,
+        username: "guest"
+      };
     default:
       return state;
   }

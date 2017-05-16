@@ -20,20 +20,25 @@ export const signup = (username, password) => {
 };
 
 export const login = (username, password) => {
-  return dispatch => new Promise(function(resolve, reject) {
-    axios
-      .post(API_URL + "/login", { username, password })
-      .then(res => {
-        console.log(res.data);
-        dispatch({
-          type: "LOGIN_USER",
-          username
+  return dispatch =>
+    new Promise(function(resolve, reject) {
+      axios
+        .post(API_URL + "/login", { username, password })
+        .then(res => {
+          console.log(res.data);
+          dispatch({
+            type: "LOGIN_USER",
+            username
+          });
+          resolve();
+        })
+        .catch(err => {
+          console.log(err);
+          reject();
         });
-        resolve();
-      })
-      .catch(err => {
-        console.log(err);
-        reject();
-      });
-  });
+    });
+};
+
+export const logout = {
+  type: "LOGOUT_USER"
 };
