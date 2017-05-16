@@ -5,6 +5,7 @@ const Task = mongoose.model(
     "Task",
     new Schema (
         {
+            userId: { type: Schema.Types.String },
             title: { type: Schema.Types.String }
         },
         {

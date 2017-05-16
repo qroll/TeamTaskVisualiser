@@ -6,6 +6,7 @@ const passport = require("passport");
 const MongoDBStore = require("connect-mongodb-session")(session);
 
 const Task = require("./models/Task");
+const User = require("./models/User");
 
 let app = express();
 
@@ -81,6 +82,7 @@ app.get("/task", (req, res) => {
 });
 
 app.post("/task", (req, res) => {
+  console.log(req.user);
   Task.create(req.body.task)
     .then(data => {
       console.log(data);
