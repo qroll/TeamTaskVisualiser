@@ -18,7 +18,7 @@ class Login extends Component {
       .then(() => {
         this.setState({
           ...this.state,
-          hasAuthed: true
+          hasAuthed: false
         })
       })
       .catch(err => {

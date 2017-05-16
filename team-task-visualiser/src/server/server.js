@@ -20,14 +20,13 @@ let corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
 });
-app.options("*", cors(corsOptions));
 
 // set up body parser (to simplify request handling)
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -54,7 +53,8 @@ app.use(passport.session());
 // serialise user ID to the session
 passport.serializeUser(function(user, done) {
   console.log('serializeUser()');
-  done(null, user.id);
+  console.log(user)
+  done(null, user._id);
 });
 
 passport.deserializeUser(function(id, done) {
@@ -66,6 +66,16 @@ passport.deserializeUser(function(id, done) {
     return done(null, user);
   });
 });
+
+app.all('*', (req, res, next)=>{
+  console.log(req.method + ' ' + req.url);
+  next();
+})
+
+app.get('/', (req, res)=>{
+  console.log('hellow im at the rrot')
+  console.log(req.user)
+})
 
 app.use(require('./auth.js'));
 
