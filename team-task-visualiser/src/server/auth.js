@@ -83,7 +83,7 @@ router.post("/login", passport.authenticate("local-login"), (req, res) => {
   res.sendStatus(200);
 });
 
-router.post("/logout", passport.authenticate("local-login"), (req, res) => {
+router.post("/logout", (req, res) => {
   req.logout();
   res.sendStatus(200);
 });
