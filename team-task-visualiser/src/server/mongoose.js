@@ -15,7 +15,7 @@ let options = Object.assign({
     }
 });
 
-let host = "192.168.1.111";
+let host = "127.0.0.1:27017";
 
 mongoose.connect("mongodb://" + host + "/fs-onboarding", options);
 

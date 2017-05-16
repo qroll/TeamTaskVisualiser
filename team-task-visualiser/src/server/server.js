@@ -26,6 +26,7 @@ app.use(function(req, res, next) {
   );
   next();
 });
+app.options("*", cors(corsOptions));
 
 // set up body parser (to simplify request handling)
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,7 +34,7 @@ app.use(bodyParser.json());
 
 // set up session middleware
 var store = new MongoDBStore({
-  uri: "mongodb://192.168.1.111:27017/fs-onboarding",
+  uri: "mongodb://127.0.0.1:27017/fs-onboarding",
   collection: "Sessions"
 });
 
