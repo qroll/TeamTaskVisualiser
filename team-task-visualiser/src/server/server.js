@@ -19,6 +19,7 @@ let corsOptions = {
 };
 
 app.use(cors(corsOptions));
+/*
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header(
@@ -27,6 +28,7 @@ app.use(function(req, res, next) {
   );
   next();
 });
+*/
 
 // set up body parser (to simplify request handling)
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -80,7 +82,8 @@ app.get('/', (req, res)=>{
 app.use(require('./auth.js'));
 
 app.get("/task", (req, res) => {
-  Task.find()
+  console.log(req.user);
+  Task.find({userId: req.user._id})
     .then(data => {
       console.log(data);
       res.json(data);
@@ -93,7 +96,7 @@ app.get("/task", (req, res) => {
 
 app.post("/task", (req, res) => {
   console.log(req.user);
-  Task.create(req.body.task)
+  Task.create(Object.assign({}, req.body.task, {userId: req.user._id}))
     .then(data => {
       console.log(data);
       res.json(data);

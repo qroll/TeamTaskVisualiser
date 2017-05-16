@@ -1,17 +1,8 @@
-import axios from "axios";
-
-let API_URL = "http://localhost:9000";
-
-let instance = axios.create({
-  baseURL: API_URL,
-  timeout: 3000,
-  withCredentials: true
-});
+import { callApi } from "../util/callApi";
 
 export const getTasks = () => {
   return dispatch => {
-    axios
-      .get(API_URL + "/task")
+    callApi("/task", "get")
       .then(res => {
         console.log(res.data);
         dispatch({
@@ -27,8 +18,7 @@ export const getTasks = () => {
 
 export const addTask = task => {
   return dispatch => {
-    instance
-      .post(API_URL + "/task", { task })
+    callApi("/task", "post", { task })
       .then(res => {
         console.log(res.data);
         dispatch({
