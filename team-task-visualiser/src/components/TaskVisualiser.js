@@ -11,14 +11,16 @@ class TaskVisualiser extends Component {
   }
 
   render() {
-    const { tasks, addTask, editTask } = this.props;
+    const { tasks, user, addTask, editTask } = this.props;
 
-    return (
+    return user.isAuthed
+    ? (
       <div className="TaskVisualiser">
         <TaskForm addTask={addTask} />
         <TaskList editTask={editTask} tasks={tasks} />
       </div>
-    );
+    )
+    : null;
   }
 }
 

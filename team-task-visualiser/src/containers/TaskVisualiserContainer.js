@@ -5,7 +5,8 @@ import TaskVisualiser from "../components/TaskVisualiser";
 
 const mapStateToProps = (state, props) => {
   return {
-    tasks: state.tasks
+    tasks: state.tasks,
+    user: state.user
   };
 };
 
