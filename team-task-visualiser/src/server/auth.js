@@ -4,7 +4,7 @@ const Promise = require("bluebird");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
-const User = require("./models/user");
+const User = require("./models/User");
 
 // set up passport strategies
 passport.use(
